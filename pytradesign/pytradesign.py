@@ -1,5 +1,4 @@
 from datetime import datetime
-# import pytz
 import os
 import json
 import requests
@@ -20,7 +19,7 @@ class PyTradeSign:
         try:
             return json.loads(req.text)
         except Exception:
-            raise ValueError(f'Write signal error. Status: {req.status_code}. Text: {req.text}')
+            raise ValueError(f'Trade model info error. Status: {req.status_code}. Text: {req.text}')
 
     def trade_model_signals(self, trade_model_token: str, limit: int = 100, offset: int = 0) -> dict:
         url = self.__base_url + f'/api/trade_model/{trade_model_token}/signals?limit={limit}&offset={offset}'
